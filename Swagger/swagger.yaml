@@ -1,0 +1,133 @@
+swagger: '2.0'
+info:
+  description: ''
+  version: '2'
+  title: MVC
+host: 'localhost:2863'
+tags:
+
+  - name: Covid-19
+
+schemes:
+  - http
+paths:
+  /api/getAll:
+    get:
+      tags:
+        - Data
+      summary: List Name All
+      description: List HNID Firstname Lastname
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: update success
+          schema:
+            $ref: '#/definitions/createsuccess200'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/badRequest400'
+        '401':
+          description: unAuthenticate
+          schema:
+            $ref: '#/definitions/unAuthenticate401'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal500'
+  /api/getHospital:
+    post:
+      tags:
+        - Data
+      summary: Patients
+      description: List Firstname Lastname
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: HID
+          in: formData
+          description: รหัสโรงพยาบาล
+          required: true
+          type: string
+          default: "00002"
+      responses:
+        '200':
+          description: update success
+          schema:
+            $ref: '#/definitions/createsuccess200'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/badRequest400'
+        '401':
+          description: unAuthenticate
+          schema:
+            $ref: '#/definitions/unAuthenticate401'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal500'
+  /api/top3:
+    get:
+      tags:
+        - Data
+      summary: Get top3
+      description: List top3
+      responses:
+        '200':
+          description: update success
+          schema:
+            $ref: '#/definitions/createsuccess200'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/badRequest400'
+        '401':
+          description: unAuthenticate
+          schema:
+            $ref: '#/definitions/unAuthenticate401'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal500'
+definitions:
+  createsuccess200:
+    type: object
+    properties:
+      statusCode:
+        type: number
+        example: 200
+      message:
+        type: string
+        example: update success
+  badRequest400:
+    type: object
+    properties:
+      statusCode:
+        type: number
+        example: 400
+      message:
+        type: string
+        example: Bad Request
+  unAuthenticate401:
+    type: object
+    properties:
+      statusCode:
+        type: number
+        example: 401
+      message:
+        type: string
+        example: Unauthorized
+  internal500:
+    type: object
+    properties:
+      statusCode:
+        type: number
+        example: 500
+      message:
+        type: string
+        example: Internal Server Error
+
