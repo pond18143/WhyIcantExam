@@ -1,6 +1,6 @@
 # ขั้นตอนการใช้งานโค้ด
 
-1.git clone git@github.com:pond18143/WhyIcantExam.g
+1.git clone git@github.com:pond18143/WhyIcantExam.git
 
 2.npm install
 
